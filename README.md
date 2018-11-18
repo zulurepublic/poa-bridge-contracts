@@ -1,8 +1,32 @@
+# Zulu Republic Proof of Authority Side Chain Experiment (Forked from POA Network)
+
+## steps to create a side chain in the test environment
+
+1. Start two instances of ganache-cli
+
+- ganache-cli -e 100000 -d --acctKeys ~/Documents/ganache-accounts.json -p 8545
+- ganache-cli -e 100000 -d --acctKeys ~/Documents/ganache-accounts.json -p 8546
+
+2. Change env variables in the deploy/.env file so it reflects the created accounts fro ganache.
+Basically change the addresses from the env file to the ones ganache provides.
+
+3. run deployment commands
+
+- node deploy/testenv-deploy.js token
+add the deployed token address to the deploy/.env file as variable `ERC20_TOKEN_ADDRESS`
+
+- node deploy/deploy.js
+
+Now you should have the copy of a test ZULU ERC20 token on the side chain
+
+
+********* POA DOC STARTS FROM HERE *********
+
 [![Join the chat at https://gitter.im/poanetwork/poa-bridge](https://badges.gitter.im/poanetwork/poa-bridge.svg)](https://gitter.im/poanetwork/poa-bridge?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/poanetwork/poa-parity-bridge-contracts.svg?branch=master)](https://travis-ci.org/poanetwork/poa-parity-bridge-contracts)
 
 # POA Bridge Smart Contracts
-These contracts provide the core functionality for the POA bridge. They implement the logic to relay assests between two EVM-based blockchain networks. The contracts collect bridge validator's signatures to approve and facilitate relay operations. 
+These contracts provide the core functionality for the POA bridge. They implement the logic to relay assests between two EVM-based blockchain networks. The contracts collect bridge validator's signatures to approve and facilitate relay operations.
 
 The POA bridge smart contracts are intended to work with [the bridge process implemented on NodeJS](https://github.com/poanetwork/token-bridge).
 Please refer to the bridge process documentation to configure and deploy the bridge.
@@ -57,14 +81,14 @@ Responsibilities and roles of the bridge:
 - **User** role:
   - sends assets to Bridge contracts:
     - in `NATIVE-TO-ERC` mode: send native coins to the Home Bridge to receive ERC20 tokens from the Foreign Bridge, send ERC20 tokens to the Foreign Bridge to unlock native coins from the Home Bridge;
-    - in `ERC-TO-ERC` mode: transfer ERC20 tokens to the Foreign Bridge to mint ERC20 tokens on the Home Network, transfer ERC20 tokens to the Home Bridge to unlock ERC20 tokens on Foreign networks; 
+    - in `ERC-TO-ERC` mode: transfer ERC20 tokens to the Foreign Bridge to mint ERC20 tokens on the Home Network, transfer ERC20 tokens to the Home Bridge to unlock ERC20 tokens on Foreign networks;
     - in `ERC-TO-NATIVE` mode: send ERC20 tokens to the Foreign Bridge to receive native coins from the Home Bridge, send native coins to the Home Bridge to unlock ERC20 tokens from the Foreign Bridge.
 
 ## Usage
 
 There are two ways to deploy contracts:
 * install and use NodeJS
-* use Docker to deploy 
+* use Docker to deploy
 
 ### Deployment with NodeJS
 
@@ -90,7 +114,7 @@ npm run flatten
 The flattened contracts can be found in the `flats` directory.
 
 ### Deployment in the Docker environment
-[Docker](https://www.docker.com/community-edition) and [Docker Compose](https://docs.docker.com/compose/install/) can be used to deploy contracts without NodeJS installed on the system. 
+[Docker](https://www.docker.com/community-edition) and [Docker Compose](https://docs.docker.com/compose/install/) can be used to deploy contracts without NodeJS installed on the system.
 If you are on Linux, we recommend you [create a docker group and add your user to it](https://docs.docker.com/install/linux/linux-postinstall/), so that you can use the CLI without `sudo`.
 
 #### Prepare the docker container
@@ -150,6 +174,3 @@ See the [CONTRIBUTING](CONTRIBUTING.md) document for contribution, testing and p
 [![License: GPL v3.0](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 This project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for details.
-
-
-

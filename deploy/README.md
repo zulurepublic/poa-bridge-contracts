@@ -18,9 +18,9 @@ cp .env.example .env
 
 4. Adjust the parameters in the `.env` file depending on the desired bridge mode. See below for comments related to each parameter.
 
-5. Add funds to the deployment accounts in both theHome and Foreign networks. 
+5. Add funds to the deployment accounts in both theHome and Foreign networks.
 
-6. Run `node deploy.js`. 
+6. Run `node deploy.js`.
 
 ## `NATIVE-TO-ERC` Bridge Mode Configuration Example.
 
@@ -128,7 +128,7 @@ VALIDATORS="0x 0x 0x"
 ```
 
 
-## `ERC-TO-ERC` Bridge Mode Configuration Example. 
+## `ERC-TO-ERC` Bridge Mode Configuration Example.
 
 This example of an `.env` file for the `erc-to-erc` bridge mode includes comments describing each parameter.
 
@@ -229,7 +229,7 @@ REQUIRED_NUMBER_OF_VALIDATORS=1
 VALIDATORS="0x 0x 0x"
 ```
 
-## `ERC-TO-NATIVE` Bridge Mode Configuration Example. 
+## `ERC-TO-NATIVE` Bridge Mode Configuration Example.
 
 This example of an `.env` file for the `erc-to-native` bridge mode includes comments describing each parameter.
 
