@@ -176,10 +176,10 @@ async function deployHome() {
   const initializeHomeBridgeData = await homeBridgeImplementation.methods
     .initialize(
       storageValidatorsHome.options.address,
-      HOME_DAILY_LIMIT,
-      HOME_MAX_AMOUNT_PER_TX,
-      HOME_MIN_AMOUNT_PER_TX,
-      HOME_GAS_PRICE,
+      HOME_DAILY_LIMIT.toString(),
+      HOME_MAX_AMOUNT_PER_TX.toString(),
+      HOME_MIN_AMOUNT_PER_TX.toString(),
+      HOME_GAS_PRICE.toString(),
       HOME_REQUIRED_BLOCK_CONFIRMATIONS,
       erc677token.options.address
     )
@@ -213,7 +213,7 @@ async function deployHome() {
     homeBridge: {
       address: homeBridgeStorage.options.address,
       deployedBlockNumber: Web3Utils.hexToNumber(homeBridgeStorage.deployedBlockNumber)
-    }, 
+    },
     erc677: { address: erc677token.options.address }
   }
 }

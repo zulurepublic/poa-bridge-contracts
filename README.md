@@ -1,21 +1,30 @@
 # Zulu Republic Proof of Authority Side Chain Experiment (Forked from POA Network)
 
-## steps to create a side chain in the test environment
+## steps to create a side chain in local environment with deployed ZTX
 
 1. Start two instances of ganache-cli
 
-- ganache-cli -e 100000 -d --acctKeys ~/Documents/ganache-accounts.json -p 8545
-- ganache-cli -e 100000 -d --acctKeys ~/Documents/ganache-accounts.json -p 8546
+- `ganache-cli -e 100000 -d --acctKeys ./ganache-accounts.json -p 8545`
+- `ganache-cli -e 100000 -d --acctKeys ./ganache-accounts.json -p 8546`
 
-2. Change env variables in the deploy/.env file so it reflects the created accounts fro ganache.
-Basically change the addresses from the env file to the ones ganache provides.
+2. Install dependecies
 
-3. run deployment commands
+Install root directory
+- `npm install`
 
-- node deploy/testenv-deploy.js token
-add the deployed token address to the deploy/.env file as variable `ERC20_TOKEN_ADDRESS`
+To install in the `deploy` directory
+- `cd deploy && npm install`
 
-- node deploy/deploy.js
+3. Copy env variables
+
+- `cp .env.example.zulu .env`
+
+4. Compile contracts
+
+- `cd ../ && ./node_modules/.bin/truffle compile`
+
+5. Run deployment commands
+- `node deploy/deploy token`
 
 Now you should have the copy of a test ZULU ERC20 token on the side chain
 
